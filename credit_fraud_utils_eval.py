@@ -1,7 +1,7 @@
-from sklearn.metrics import classification_report, roc_auc_score, accuracy_score, confusion_matrix
+from sklearn.metrics import classification_report, confusion_matrix
+import numpy as np
 import json
 import os
-
 from sklearn.metrics import f1_score, precision_recall_curve, auc
 
 def evaluate_model(model, x_val, y_val):
@@ -15,9 +15,19 @@ def evaluate_model(model, x_val, y_val):
     precision, recall, _ = precision_recall_curve(y_val, y_prob)
     pr_auc = auc(recall, precision)
 
+    # Calculate Confusion Matrix
+    cm = confusion_matrix(y_val, y_pred)
+    cm_dict = {
+        "True Negative": int(cm[0][0]),
+        "False Positive": int(cm[0][1]),
+        "False Negative": int(cm[1][0]),
+        "True Positive": int(cm[1][1])
+    }
+
     report = {
         'F1-Score': f1,
         'PR-AUC': pr_auc,
+        'Confusion Matrix': cm_dict,
         'Classification Report': classification_report(y_val, y_pred, target_names=['Not Fraud', 'Fraud'])
     }
 
@@ -25,12 +35,14 @@ def evaluate_model(model, x_val, y_val):
 
 
 
+
 def generate_report(reports, save_dir):
-    # Summarize F1-Score and PR-AUC for each model
+    # Summarize F1-Score, PR-AUC, and Confusion Matrix for each model
     summary = {
         model_name: {
             'F1-Score': report['F1-Score'],
             'PR-AUC': report['PR-AUC'],
+            'Confusion Matrix': report['Confusion Matrix'],
             'Classification Report': report['Classification Report']
         }
         for model_name, report in reports.items()
@@ -47,6 +59,7 @@ def generate_report(reports, save_dir):
     with open(summary_file, 'w') as f:
         json.dump(summary, f, indent=4)
     print(f"Model summary saved to '{summary_file}'")
+
 
 
 
