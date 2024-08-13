@@ -47,3 +47,37 @@ def generate_report(reports, save_dir):
     with open(summary_file, 'w') as f:
         json.dump(summary, f, indent=4)
     print(f"Model summary saved to '{summary_file}'")
+
+
+
+def find_best_threshold(model, X_val, y_val):
+    """
+    Find the best threshold for the model that optimizes the F1-score.
+
+    Parameters:
+    - model: Trained model (must have a predict_proba method)
+    - X_val: Validation features
+    - y_val: True labels for the validation set
+
+    Returns:
+    - best_threshold: The threshold that yields the highest F1-score
+    - best_f1: The best F1-score obtained
+    """
+
+    # Get predicted probabilities for the positive class (fraud)
+    y_probs = model.predict_proba(X_val)[:, 1]
+
+    # Initialize variables to store the best threshold and best F1-score
+    best_threshold = 0.0
+    best_f1 = 0.0
+
+    # Evaluate thresholds from 0.01 to 0.99
+    for threshold in np.arange(0.01, 1.0, 0.01):
+        y_pred = (y_probs >= threshold).astype(int)
+        f1 = f1_score(y_val, y_pred)
+
+        if f1 > best_f1:
+            best_f1 = f1
+            best_threshold = threshold
+
+    return best_threshold, best_f1
