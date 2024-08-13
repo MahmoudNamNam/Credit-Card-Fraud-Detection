@@ -113,7 +113,7 @@ The project consists of the following files:
 - **Location:** Detailed reports for each resampling technique (SMOTE, undersampling, oversampling) are stored in the `Report` folder.
 - **Content:** Each report includes metrics such as F1-score, PR-AUC, and the best threshold for different models.
 
-## model.pkl File
+## models
 
 - The `model.pkl` file contains a dictionary with:
   - The trained model.
