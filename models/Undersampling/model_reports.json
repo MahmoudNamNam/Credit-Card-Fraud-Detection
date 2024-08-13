@@ -1,0 +1,80 @@
+{
+    "Logistic Regression": {
+        "F1-Score": 0.08372093023255814,
+        "PR-AUC": 0.6637808938683998,
+        "Confusion Matrix": {
+            "True Negative": 55106,
+            "False Positive": 1764,
+            "False Negative": 9,
+            "True Positive": 81
+        },
+        "Classification Report": "              precision    recall  f1-score   support\n\n   Not Fraud       1.00      0.97      0.98     56870\n       Fraud       0.04      0.90      0.08        90\n\n    accuracy                           0.97     56960\n   macro avg       0.52      0.93      0.53     56960\nweighted avg       1.00      0.97      0.98     56960\n",
+        "Best Threshold": 0.99,
+        "F1-Score (Best Threshold)": 0.47019867549668876
+    },
+    "Random Forest": {
+        "F1-Score": 0.1309148264984227,
+        "PR-AUC": 0.7818351315582344,
+        "Confusion Matrix": {
+            "True Negative": 55775,
+            "False Positive": 1095,
+            "False Negative": 7,
+            "True Positive": 83
+        },
+        "Classification Report": "              precision    recall  f1-score   support\n\n   Not Fraud       1.00      0.98      0.99     56870\n       Fraud       0.07      0.92      0.13        90\n\n    accuracy                           0.98     56960\n   macro avg       0.54      0.95      0.56     56960\nweighted avg       1.00      0.98      0.99     56960\n",
+        "Best Threshold": 0.88,
+        "F1-Score (Best Threshold)": 0.8156424581005587
+    },
+    "Gradient Boosting": {
+        "F1-Score": 0.054140127388535034,
+        "PR-AUC": 0.49774294284318216,
+        "Confusion Matrix": {
+            "True Negative": 53905,
+            "False Positive": 2965,
+            "False Negative": 5,
+            "True Positive": 85
+        },
+        "Classification Report": "              precision    recall  f1-score   support\n\n   Not Fraud       1.00      0.95      0.97     56870\n       Fraud       0.03      0.94      0.05        90\n\n    accuracy                           0.95     56960\n   macro avg       0.51      0.95      0.51     56960\nweighted avg       1.00      0.95      0.97     56960\n",
+        "Best Threshold": 0.99,
+        "F1-Score (Best Threshold)": 0.5948275862068966
+    },
+    "AdaBoost": {
+        "F1-Score": 0.05034880194115863,
+        "PR-AUC": 0.6509811769125718,
+        "Confusion Matrix": {
+            "True Negative": 53746,
+            "False Positive": 3124,
+            "False Negative": 7,
+            "True Positive": 83
+        },
+        "Classification Report": "              precision    recall  f1-score   support\n\n   Not Fraud       1.00      0.95      0.97     56870\n       Fraud       0.03      0.92      0.05        90\n\n    accuracy                           0.95     56960\n   macro avg       0.51      0.93      0.51     56960\nweighted avg       1.00      0.95      0.97     56960\n",
+        "Best Threshold": 0.68,
+        "F1-Score (Best Threshold)": 0.6896551724137931
+    },
+    "Neural Network": {
+        "F1-Score": 0.12030075187969924,
+        "PR-AUC": 0.7158824250168601,
+        "Confusion Matrix": {
+            "True Negative": 55710,
+            "False Positive": 1160,
+            "False Negative": 10,
+            "True Positive": 80
+        },
+        "Classification Report": "              precision    recall  f1-score   support\n\n   Not Fraud       1.00      0.98      0.99     56870\n       Fraud       0.06      0.89      0.12        90\n\n    accuracy                           0.98     56960\n   macro avg       0.53      0.93      0.55     56960\nweighted avg       1.00      0.98      0.99     56960\n",
+        "Best Threshold": 0.9500000000000001,
+        "F1-Score (Best Threshold)": 0.8235294117647058
+    },
+    "Voting Classifier": {
+        "F1-Score": 0.11193526635198921,
+        "PR-AUC": 0.7401254873952919,
+        "Confusion Matrix": {
+            "True Negative": 55560,
+            "False Positive": 1310,
+            "False Negative": 7,
+            "True Positive": 83
+        },
+        "Classification Report": "              precision    recall  f1-score   support\n\n   Not Fraud       1.00      0.98      0.99     56870\n       Fraud       0.06      0.92      0.11        90\n\n    accuracy                           0.98     56960\n   macro avg       0.53      0.95      0.55     56960\nweighted avg       1.00      0.98      0.99     56960\n",
+        "Best Threshold": 0.9400000000000001,
+        "F1-Score (Best Threshold)": 0.8235294117647058
+    }
+}

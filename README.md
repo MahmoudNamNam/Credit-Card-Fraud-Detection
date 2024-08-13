@@ -9,15 +9,18 @@
    - [Feature Engineering](#feature-engineering)
 3. [Modeling](#modeling)
    - [Model Selection](#model-selection)
+   - [Resampling Techniques](#resampling-techniques)
    - [Threshold Selection](#threshold-selection)
    - [Cross-Validation](#cross-validation)
 4. [Implementation](#implementation)
    - [File Structure](#file-structure)
    - [credit_fraud_train.py](#credit_fraud_trainpy)
+   - [credit_fraud_test.py](#credit_fraud_testpy)
    - [credit_fraud_utils_data.py](#credit_fraud_utils_datapy)
    - [credit_fraud_utils_eval.py](#credit_fraud_utils_evalpy)
-5. [model.pkl File](#modelpkl-file)
-6. [Conclusion](#conclusion)
+5. [Reports](#reports)
+6. [model.pkl File](#modelpkl-file)
+7. [Conclusion](#conclusion)
 
 ## Introduction
 
@@ -39,41 +42,56 @@ This project focuses on the binary classification problem of detecting credit ca
 
 ### Feature Engineering
 
-- **New Features:** Created additional features to enhance model performance.
 - **Scaling/Normalization:** Applied scaling techniques to ensure features are on a similar scale.
-- **Class Imbalance Handling:** Techniques such as SMOTE or class weighting were considered.
+- **Class Imbalance Handling:** Techniques such as SMOTE, undersampling, or oversampling were applied to address class imbalance.
 
 ## Modeling
 
 ### Model Selection
 
-- **Algorithms Used:** Tried different models such as Logistic Regression, Random Forest, and Gradient Boosting.
-- **Evaluation Metrics:** Used metrics like accuracy, precision, recall, F1-score, and ROC-AUC to evaluate model performance.
+- **Algorithms Used:** Evaluated models including Logistic Regression, Random Forest, Gradient Boosting, AdaBoost, Neural Networks, and Voting Classifiers.
+- **Evaluation Metrics:** Metrics such as accuracy, precision, recall, F1-score, PR-AUC, and ROC-AUC were used to assess model performance.
+
+### Resampling Techniques
+
+- **Techniques:** Resampling techniques such as SMOTE, undersampling, and oversampling were applied to address class imbalance.
+- **Reports:** Detailed reports for each resampling technique (SMOTE, undersampling, oversampling) are saved in the `Report` folder.
 
 ### Threshold Selection
 
-- **Best Threshold:** Selected the best classification threshold based on evaluation metrics to balance precision and recall.
+- **Best Threshold:** The best classification threshold was selected based on F1-score and other evaluation metrics to balance precision and recall.
 
 ### Cross-Validation
 
-- **Cross-Validation:** Used cross-validation to ensure the model's robustness and avoid overfitting.
+- **Cross-Validation:** Cross-validation was used to validate the models' performance and to avoid overfitting.
 
 ## Implementation
 
 ### File Structure
 
 The project consists of the following files:
-- `credit_fraud_train.py`: Main entry point for training models.
-- `credit_fraud_utils_data.py`: Utility functions for data loading and processing.
-- `credit_fraud_utils_eval.py`: Utility functions for model evaluation.
+
+- `credit_fraud_train.py`: Main script for training models based on user input via `argparse`.
+- `credit_fraud_test.py`: Script for testing the trained model on a test dataset.
+- `credit_fraud_utils_data.py`: Utility functions for data loading and preprocessing.
+- `credit_fraud_utils_eval.py`: Utility functions for model evaluation and threshold selection.
 
 ### `credit_fraud_train.py`
 
-- **Purpose:** Script for training models based on user input via `argparse`.
+- **Purpose:** Script for training multiple models and selecting the best one based on evaluation metrics.
 - **Features:**
-  - Loads data.
-  - Trains multiple models.
-  - Selects and saves the best model with the optimal threshold.
+  - Loads and preprocesses training and validation data.
+  - Applies resampling techniques.
+  - Trains models.
+  - Evaluates models and saves the best-performing model along with the optimal threshold.
+
+### `credit_fraud_test.py`
+
+- **Purpose:** Script for testing the saved model on a test dataset.
+- **Features:**
+  - Loads and preprocesses test data.
+  - Loads the trained model and applies it to the test data.
+  - Generates evaluation reports including classification metrics and ROC-AUC score.
 
 ### `credit_fraud_utils_data.py`
 
@@ -88,6 +106,12 @@ The project consists of the following files:
 - **Key Functions:**
   - `evaluate_model()`: Evaluates the model using various metrics.
   - `find_best_threshold()`: Finds the optimal threshold for classification.
+  - `generate_report()`: Generates detailed reports for each model and resampling technique.
+
+## Reports
+
+- **Location:** Detailed reports for each resampling technique (SMOTE, undersampling, oversampling) are stored in the `Report` folder.
+- **Content:** Each report includes metrics such as F1-score, PR-AUC, and the best threshold for different models.
 
 ## model.pkl File
 
@@ -98,6 +122,5 @@ The project consists of the following files:
 
 ## Conclusion
 
-- **Summary:** The project successfully identifies the best model for detecting credit card fraud, balancing precision and recall.
-- **Future Work:** Possible improvements include exploring additional features or using advanced ensemble methods.
-
+- **Summary:** The project successfully identifies the best model for detecting credit card fraud, balancing precision and recall across various resampling techniques.
+- **Future Work:** Possible improvements include exploring additional features, advanced ensemble methods, and real-time fraud detection.

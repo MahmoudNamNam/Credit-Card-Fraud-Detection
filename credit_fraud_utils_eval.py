@@ -54,12 +54,6 @@ def generate_report(reports, save_dir):
         json.dump(reports, f, indent=4)
     print(f"Detailed model reports saved to '{report_file}'")
 
-    # Save the summary
-    summary_file = os.path.join(save_dir, 'model_summary.json')
-    with open(summary_file, 'w') as f:
-        json.dump(summary, f, indent=4)
-    print(f"Model summary saved to '{summary_file}'")
-
 
 def find_best_threshold(model, x_val, y_val):
     """
